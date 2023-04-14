@@ -1,22 +1,31 @@
-import React from "react"
-import { NavLink, Outlet } from "react-router-dom";
+
+import Switch from '@mui/material/Switch';
+import React, { useContext } from "react"
+import { Outlet } from "react-router-dom";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const Navbar = () => {
+
+  const {state, dispatch} = useContext(ThemeContext);
+
+  const handleChange = ()=>{
+    dispatch({ type: "SWITCH_DARK_MODE"})
+  }
+
   return (
     <div>
       <h2>This is the navbar</h2>
-      {/*<NavLink to="/dentists" className={({ isActive }) => (isActive ? activeNavbar : "navbar")}>
-        Odontólogos
-  </NavLink>*/}
-      <ul>
-        <li>Odontólogos</li>
-        <li>Contacto</li>
-        <li>Favoritos</li>
-        <li>Modo Oscuro</li>
-      </ul>
-      <Outlet />
-    </div>
-  )
-}
+      <Switch
+      checked={state.isDark}
+      onChange={handleChange}
+      inputProps={{'aria-label': 'controlled'}}
+      />
 
-export default Navbar
+      <div style={{ minHeight: "80vh"}}>
+        <Outlet />
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;

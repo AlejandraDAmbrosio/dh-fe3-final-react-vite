@@ -4,6 +4,7 @@ import Footer from "./components/layouts/Footer/Footer";
 import DentistContextProvider from "./context/DentistContext";
 import ThemeContextProvider from "./context/ThemeContext";
 import DentistsContainer from "./components/pages/Dentists/DentistsContainer";
+import Home from "./components/pages/Home/Home"
 
 //import './App.css'
 
@@ -14,7 +15,7 @@ function App() {
       <ThemeContextProvider>
         <DentistContextProvider>
           <Routes>
-            <Route path="/" element={<h1>home</h1>} />
+            <Route path="/" element={<Home />} />
             <Route element={<Navbar />}>
               <Route element={<Footer />}>
                 <Route path="dentists" element={<DentistsContainer />} />

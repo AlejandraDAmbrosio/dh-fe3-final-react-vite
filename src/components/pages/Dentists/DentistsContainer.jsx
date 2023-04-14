@@ -2,10 +2,11 @@ import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { DentistContext } from "../../../context/DentistContext";
 import Dentists from "./Dentists";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 
 const DentistsContainer = () => {
-  const {state, dispatch} = useContext(DentistContext)
+  const {state, dispatch} = useContext(DentistContext, ThemeContext)
 
   useEffect(() => {
     const getDentists = axios.get(
@@ -20,9 +21,9 @@ const DentistsContainer = () => {
 
   return (
   <div>
-    <h2>Acá van los dentistas</h2>
+    <Dentists dentists={state.dentists} dispatch={dispatch} />
   </div>
-  /*<Dentists dentists={state.dentists} dispatch={dispatch} />;*/
+  
   )
 };
 

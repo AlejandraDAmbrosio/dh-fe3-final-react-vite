@@ -3,7 +3,8 @@ import React, { createContext, useReducer } from "react";
 export const DentistContext = createContext();
 
 const initialState = {
-  dentists: []
+  dentists: [],
+  favs: []
 };
 
 const dentistReducer = (state, action) => {
